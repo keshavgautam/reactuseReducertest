@@ -1,25 +1,20 @@
+import React, { useEffect, useContext, useReducer, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import A from './componets/a';
+import B from './componets/b';
+
+import { initialState, reducer } from './store.js';
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [state, dispatch] = useReducer(reducer, initialState);
+    return (
+        <div className="App">
+            Count: {state.count}
+            <A />
+            <B />
+        </div>
+    );
 }
 
 export default App;
